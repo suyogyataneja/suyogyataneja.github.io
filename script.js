@@ -1,4 +1,4 @@
-const text = "Senior Full-Stack Developer | .NET | CQRS | Azure";
+const text = "Enterprise .NET Developer | Microservices | CQRS | Azure";
 let i = 0;
 
 function typeEffect() {
