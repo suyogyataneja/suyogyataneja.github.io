@@ -1,35 +1,23 @@
-// Typing Effect
-const text = "Senior Full-Stack Developer | .NET | React | Azure";
-let index = 0;
+const text = "Senior Full-Stack Developer | .NET | CQRS | Azure";
+let i = 0;
 
-function type() {
-  if (index < text.length) {
-    document.getElementById("typing").innerHTML += text.charAt(index);
-    index++;
-    setTimeout(type, 50);
+function typeEffect() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 50);
   }
 }
 
-type();
+typeEffect();
 
-// Fade-in on scroll
 const faders = document.querySelectorAll(".fade-in");
 
-const appearOptions = {
-  threshold: 0.2
-};
-
-const appearOnScroll = new IntersectionObserver(function(
-  entries,
-  observer
-) {
+const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     entry.target.classList.add("visible");
-    observer.unobserve(entry.target);
   });
-}, appearOptions);
+}, { threshold: 0.2 });
 
-faders.forEach(fader => {
-  appearOnScroll.observe(fader);
-});
+faders.forEach(el => observer.observe(el));
