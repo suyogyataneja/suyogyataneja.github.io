@@ -4,81 +4,105 @@
   <meta charset="UTF-8">
   <title>Suyogya Taneja | Senior Full-Stack Developer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <nav id="navbar">
-    <div class="nav-container">
-      <div class="logo">Suyogya</div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </div>
+<nav>
+  <div class="container nav-container">
+    <div class="logo">Suyogya Taneja</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <header class="hero">
-    <h1>Hi, I'm Suyogya 👋</h1>
-    <h2><span id="typing"></span></h2>
+<header class="hero">
+
+  <img src="profile.jpg" alt="Suyogya Taneja" class="profile-pic">
+
+  <h1>Suyogya Taneja</h1>
+
+  <h2 id="typing"></h2>
+
+  <p class="intro">
+    Melbourne-based Senior Full-Stack Developer currently working at Jemena.
+    Specialising in .NET Core, CQRS, Domain-Driven Design, Azure and scalable enterprise systems.
+  </p>
+
+  <div class="hero-buttons">
     <a href="resume.pdf" class="btn">Download Resume</a>
-  </header>
+    <a href="https://github.com/yourusername" target="_blank" class="btn-outline">GitHub</a>
+    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="btn-outline">LinkedIn</a>
+  </div>
 
-  <section id="about" class="fade-in">
-    <h2>About Me</h2>
-    <p>
-      Melbourne-based Senior Full-Stack Developer specialising in
-      .NET 8/9, Clean Architecture, CQRS, React and Azure.
-      I design scalable, maintainable systems and enjoy solving
-      complex engineering problems.
-    </p>
-  </section>
+</header>
 
-  <section id="skills" class="fade-in">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div>.NET / C#</div>
-      <div>Clean Architecture</div>
-      <div>CQRS / MediatR</div>
-      <div>EF Core / SQL</div>
-      <div>React / TypeScript</div>
-      <div>Azure / CI-CD</div>
-    </div>
-  </section>
+<section id="about" class="fade-in container">
+  <h2>About Me</h2>
+  <p>
+    I build scalable, maintainable enterprise software with strong emphasis on
+    clean architecture, modular design and high test coverage.
+    My experience spans energy, SaaS and enterprise platforms.
+  </p>
+</section>
 
-  <section id="projects" class="fade-in">
-    <h2>Projects</h2>
+<section id="experience" class="fade-in container">
+  <h2>Experience</h2>
 
-    <div class="project-card">
-      <h3>Reactivities</h3>
-      <p>Full-stack CRUD platform using .NET 8, React, CQRS and EF Core.</p>
-      <a href="#" target="_blank">View Code →</a>
-    </div>
+  <div class="card">
+    <h3>Software Developer — Jemena (2024–Present)</h3>
+    <ul>
+      <li>Designed microservices using .NET Core & ASP.NET Web API</li>
+      <li>Implemented CQRS and Domain-Driven Design</li>
+      <li>Maintained 90%+ test coverage (xUnit, Moq)</li>
+      <li>Automated CI/CD pipelines via Azure DevOps</li>
+      <li>Built PowerShell automation for business workflows</li>
+    </ul>
+  </div>
 
-    <div class="project-card">
-      <h3>Energy Automation</h3>
-      <p>PowerShell automation for energy market validation & reporting.</p>
-      <a href="#" target="_blank">View Code →</a>
-    </div>
-  </section>
+  <div class="card">
+    <h3>Software Developer — Servcorp (2022–2024)</h3>
+    <ul>
+      <li>Developed enterprise SaaS using .NET Core & React</li>
+      <li>Worked with Event-Driven Architecture (Kafka, Docker)</li>
+      <li>Implemented DDD & CQRS patterns</li>
+      <li>Managed build and release pipelines</li>
+    </ul>
+  </div>
 
-  <section id="contact" class="fade-in">
-    <h2>Contact</h2>
-    <p>Email: your@email.com</p>
-    <p>LinkedIn: linkedin.com/in/yourprofile</p>
-    <p>GitHub: github.com/yourusername</p>
-  </section>
+</section>
 
-  <footer>
-    <p>© 2026 Suyogya Taneja</p>
-  </footer>
+<section id="skills" class="fade-in container">
+  <h2>Technical Skills</h2>
+  <div class="skills-grid">
+    <div>.NET Core / C#</div>
+    <div>Clean Architecture</div>
+    <div>CQRS / DDD</div>
+    <div>Entity Framework</div>
+    <div>React / Angular</div>
+    <div>SQL Server</div>
+    <div>Azure / CI-CD</div>
+    <div>Docker / Kubernetes</div>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<section id="contact" class="fade-in container">
+  <h2>Contact</h2>
+  <p>Email: suyogyataneja@gmail.com</p>
+  <p>Location: Melbourne, Australia</p>
+  <p>Phone: +61 452 603 375</p>
+</section>
+
+<footer>
+  © 2026 Suyogya Taneja
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
