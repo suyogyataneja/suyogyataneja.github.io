@@ -3,68 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <title>Suyogya Taneja | Senior Full-Stack Developer</title>
-  <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <h1>Suyogya Taneja</h1>
-    <p>Senior Full-Stack Developer | .NET | React | Azure</p>
-  </header>
-
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="logo">Suyogya</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
   </nav>
 
-  <section id="about">
+  <header class="hero">
+    <h1>Hi, I'm Suyogya 👋</h1>
+    <h2><span id="typing"></span></h2>
+    <a href="resume.pdf" class="btn">Download Resume</a>
+  </header>
+
+  <section id="about" class="fade-in">
     <h2>About Me</h2>
     <p>
-      Melbourne-based Senior Full-Stack Developer with strong expertise in
-      .NET 8/9, Clean Architecture, CQRS, EF Core, React, and Azure.
-      I build scalable systems with strong focus on maintainability and performance.
+      Melbourne-based Senior Full-Stack Developer specialising in
+      .NET 8/9, Clean Architecture, CQRS, React and Azure.
+      I design scalable, maintainable systems and enjoy solving
+      complex engineering problems.
     </p>
   </section>
 
-  <section id="skills">
+  <section id="skills" class="fade-in">
     <h2>Skills</h2>
-    <ul>
-      <li>.NET 8 / 9, C#, ASP.NET Core</li>
-      <li>Clean Architecture, CQRS, MediatR</li>
-      <li>EF Core, SQL Server</li>
-      <li>React, TypeScript</li>
-      <li>Azure, CI/CD, GitHub Actions</li>
-    </ul>
+    <div class="skills-grid">
+      <div>.NET / C#</div>
+      <div>Clean Architecture</div>
+      <div>CQRS / MediatR</div>
+      <div>EF Core / SQL</div>
+      <div>React / TypeScript</div>
+      <div>Azure / CI-CD</div>
+    </div>
   </section>
 
-  <section id="projects">
+  <section id="projects" class="fade-in">
     <h2>Projects</h2>
 
-    <div class="card">
+    <div class="project-card">
       <h3>Reactivities</h3>
-      <p>Full-Stack CRUD app using .NET 8, React, CQRS, and Clean Architecture.</p>
+      <p>Full-stack CRUD platform using .NET 8, React, CQRS and EF Core.</p>
+      <a href="#" target="_blank">View Code →</a>
     </div>
 
-    <div class="card">
-      <h3>Energy Market Automation</h3>
-      <p>PowerShell automation for pipeline validation, outage mismatch detection and alerting.</p>
+    <div class="project-card">
+      <h3>Energy Automation</h3>
+      <p>PowerShell automation for energy market validation & reporting.</p>
+      <a href="#" target="_blank">View Code →</a>
     </div>
-
   </section>
 
-  <section id="experience">
-    <h2>Experience</h2>
-    <p>
-      Software Engineer with experience building enterprise APIs,
-      automation pipelines, and cloud-based applications.
-    </p>
-  </section>
-
-  <section id="contact">
+  <section id="contact" class="fade-in">
     <h2>Contact</h2>
     <p>Email: your@email.com</p>
     <p>LinkedIn: linkedin.com/in/yourprofile</p>
@@ -75,5 +79,6 @@
     <p>© 2026 Suyogya Taneja</p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
