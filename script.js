@@ -55,19 +55,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Counter animation
 function animateValue(id, start, end, duration) {
-  let range = end - start;
-  let current = start;
-  let increment = end > start ? 1 : -1;
-  let stepTime = Math.abs(Math.floor(duration / range));
-  let obj = document.getElementById(id);
+  const obj = document.getElementById(id);
 
-  let timer = setInterval(function () {
-    current += increment;
-    obj.textContent = current;
-    if (current == end) {
-      clearInterval(timer);
+  if (!obj) return;
+
+  if (start === end) {
+    obj.textContent = end;
+    return;
+  }
+
+  let startTimestamp = null;
+
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+
+    obj.textContent = Math.floor(progress * (end - start) + start);
+
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
     }
-  }, stepTime);
+  };
+
+  window.requestAnimationFrame(step);
 }
   loadGitHubOverview();
 });
