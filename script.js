@@ -71,3 +71,22 @@ function animateValue(id, start, end, duration) {
 }
   loadGitHubOverview();
 });
+
+async function loadCommitStats() {
+  try {
+    const res = await fetch("stats.json");
+    const data = await res.json();
+
+    const total = data.data.user.contributionsCollection.contributionCalendar.totalContributions;
+
+    const commitDiv = document.createElement("p");
+    commitDiv.innerHTML = `<strong>Total Contributions (Last 12 Months):</strong> ${total}`;
+
+    document.getElementById("github-overview").appendChild(commitDiv);
+
+  } catch (err) {
+    console.error("Stats load error:", err);
+  }
+}
+
+loadCommitStats();
