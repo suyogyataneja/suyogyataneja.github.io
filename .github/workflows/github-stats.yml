@@ -11,14 +11,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
+      
       - name: Fetch GitHub Contribution Data
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           curl -H "Authorization: bearer $GH_TOKEN" \
           -X POST \
-          -d '{"query":"query { user(login: \"suyogyataneja\") { contributionsCollection { contributionCalendar { totalContributions } } } }"}' \
+          -d '{"query":"query { user(login: \"suyogyataneja\") { contributionsCollection { totalCommitContributions } thisYear: contributionsCollection(from: \"2026-01-01T00:00:00Z\") { totalCommitContributions } lastYear: contributionsCollection(from: \"2025-01-01T00:00:00Z\", to: \"2025-12-31T23:59:59Z\") { totalCommitContributions } } }"}' \
           https://api.github.com/graphql > stats.json
 
       - name: Commit stats file
