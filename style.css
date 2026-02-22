@@ -143,14 +143,21 @@ footer {
   padding: 40px;
   background: #111827;
 }
-.github-graph {
-  margin-top: 30px;
-  text-align: center;
+.github-section {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
 }
 
 .github-graph img {
   max-width: 100%;
-  border-radius: 10px;
+  border-radius: 12px;
   background: #1e293b;
-  padding: 15px;
+  padding: 20px;
+}
+
+.github-stats img {
+  max-width: 100%;
 }
