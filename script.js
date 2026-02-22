@@ -55,30 +55,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Counter animation
 function animateValue(id, start, end, duration) {
-  const obj = document.getElementById(id);
+  const element = document.getElementById(id);
+  if (!element) return;
 
-  if (!obj) return;
-
-  if (start === end) {
-    obj.textContent = end;
+  // Safety check
+  if (typeof end !== "number" || isNaN(end)) {
+    element.textContent = 0;
     return;
   }
 
-  let startTimestamp = null;
+  const startTime = performance.now();
 
-  const step = (timestamp) => {
-    if (!startTimestamp) startTimestamp = timestamp;
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
 
-    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-
-    obj.textContent = Math.floor(progress * (end - start) + start);
+    const value = Math.floor(start + (end - start) * progress);
+    element.textContent = value;
 
     if (progress < 1) {
-      window.requestAnimationFrame(step);
+      requestAnimationFrame(update);
     }
-  };
+  }
 
-  window.requestAnimationFrame(step);
+  requestAnimationFrame(update);
 }
   loadGitHubOverview();
 });
