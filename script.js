@@ -57,23 +57,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  async function loadCommitStats() {
-    try {
-      const res = await fetch("stats.json");
-      const data = await res.json();
+async function loadCommitStats() {
+  try {
+    const res = await fetch("stats.json");
+    const data = await res.json();
 
-      const total = data.data.user.contributionsCollection.contributionCalendar.totalContributions;
+    const thisYear = data.data.user.thisYear.totalCommitContributions;
+    const lastYear = data.data.user.lastYear.totalCommitContributions;
 
-      const commitDiv = document.createElement("p");
-      commitDiv.innerHTML = `<strong>Total Contributions (Last 12 Months):</strong> ${total}`;
+    const container = document.getElementById("github-overview");
 
-      document.getElementById("github-overview").appendChild(commitDiv);
+    const commitInfo = document.createElement("div");
+    commitInfo.innerHTML = `
+      <p><strong>Commits This Year:</strong> ${thisYear}</p>
+      <p><strong>Commits Last Year:</strong> ${lastYear}</p>
+    `;
 
-    } catch (err) {
-      console.error("Stats load error:", err);
-    }
+    container.appendChild(commitInfo);
+
+  } catch (err) {
+    console.error("Stats load error:", err);
   }
-
+}
 
 
   loadGitHubOverview();
