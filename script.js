@@ -14,9 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Prevent multiple animations
       if (!window.statsAnimated) {
-        animateValue("repoCount", 0, user.public_repos, 800);
-        animateValue("followerCount", 0, user.followers, 800);
-        animateValue("starCount", 0, totalStars, 800);
+        document.getElementById("repoCount").textContent = user.public_repos;
+        document.getElementById("followerCount").textContent = user.followers;
+        document.getElementById("starCount").textContent = totalStars;
         window.statsAnimated = true;
       }
 
@@ -74,23 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function animateValue(id, start, end, duration) {
-    const element = document.getElementById(id);
-    if (!element || typeof end !== "number") return;
 
-    const startTime = performance.now();
-
-    function update(currentTime) {
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-      element.textContent = Math.floor(start + (end - start) * progress);
-
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      }
-    }
-
-    requestAnimationFrame(update);
-  }
 
   loadGitHubOverview();
   loadCommitStats();
