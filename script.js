@@ -2,44 +2,72 @@ document.addEventListener("DOMContentLoaded", () => {
   const username = "suyogyataneja";
 
   async function loadGitHubOverview() {
-    try {
-      const userRes = await fetch(`https://api.github.com/users/${username}`);
-      const reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+  try {
+    const userRes = await fetch(`https://api.github.com/users/${username}`);
+    const reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
 
-      if (!userRes.ok || !reposRes.ok) {
-        throw new Error("GitHub API request failed");
+    const user = await userRes.json();
+    const repos = await reposRes.json();
+
+    const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+
+    const languages = {};
+    repos.forEach(repo => {
+      if (repo.language) {
+        languages[repo.language] = (languages[repo.language] || 0) + 1;
       }
+    });
 
-      const user = await userRes.json();
-      const repos = await reposRes.json();
+    const sortedLanguages = Object.entries(languages)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5);
 
-      const totalStars = repos.reduce((sum, r) => sum + r.stargazers_count, 0);
+    // Animate numbers
+    animateValue("repoCount", 0, user.public_repos, 800);
+    animateValue("followerCount", 0, user.followers, 800);
+    animateValue("starCount", 0, totalStars, 800);
 
-      const languages = {};
-      repos.forEach(repo => {
-        if (repo.language) {
-          languages[repo.language] = (languages[repo.language] || 0) + 1;
-        }
-      });
+    // Create language bars
+    const totalLangCount = sortedLanguages.reduce((sum, l) => sum + l[1], 0);
+    const langContainer = document.getElementById("languageBars");
+    langContainer.innerHTML = "";
 
-      const topLanguages = Object.entries(languages)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 3)
-        .map(item => item[0]);
+    sortedLanguages.forEach(([lang, count]) => {
+      const percentage = Math.round((count / totalLangCount) * 100);
 
-      const overview = document.getElementById("github-overview");
-      if (overview) {
-        overview.innerHTML = `
-          <p><strong>Public Repos:</strong> ${user.public_repos}</p>
-          <p><strong>Followers:</strong> ${user.followers}</p>
-          <p><strong>Total Stars:</strong> ${totalStars}</p>
-          <p><strong>Top Languages:</strong> ${topLanguages.join(", ")}</p>
-        `;
-      }
-    } catch (error) {
-      console.error("GitHub load error:", error);
-    }
+      const div = document.createElement("div");
+      div.classList.add("language-bar");
+
+      div.innerHTML = `
+        <span>${lang} (${percentage}%)</span>
+        <div class="progress">
+          <div class="progress-fill" style="width:${percentage}%"></div>
+        </div>
+      `;
+
+      langContainer.appendChild(div);
+    });
+
+  } catch (error) {
+    console.error("GitHub load error:", error);
   }
+}
 
+// Counter animation
+function animateValue(id, start, end, duration) {
+  let range = end - start;
+  let current = start;
+  let increment = end > start ? 1 : -1;
+  let stepTime = Math.abs(Math.floor(duration / range));
+  let obj = document.getElementById(id);
+
+  let timer = setInterval(function () {
+    current += increment;
+    obj.textContent = current;
+    if (current == end) {
+      clearInterval(timer);
+    }
+  }, stepTime);
+}
   loadGitHubOverview();
 });
