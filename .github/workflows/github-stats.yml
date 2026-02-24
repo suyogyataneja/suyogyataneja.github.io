@@ -19,8 +19,7 @@ jobs:
         run: |
           curl -H "Authorization: bearer $GH_TOKEN" \
           -X POST \
-          -d '{"query":"query { user(login: \"suyogyataneja\") { thisYear: contributionsCollection(from: \"2026-01-01T00:00:00Z\") { contributionCalendar { totalContributions } } lastYear: contributionsCollection(from: \"2025-01-01T00:00:00Z\", to: \"2025-12-31T23:59:59Z\") { contributionCalendar { totalContributions } } } }"}'
-          https://api.github.com/graphql > stats.json
+-d '{"query":"query { user(login: \"suyogyataneja\") { thisYear: contributionsCollection(from: \"2026-01-01T00:00:00Z\") { contributionCalendar { totalContributions } } lastYear: contributionsCollection(from: \"2025-01-01T00:00:00Z\", to: \"2025-12-31T23:59:59Z\") { contributionCalendar { totalContributions } } } }"}'          https://api.github.com/graphql > stats.json
 
       - name: Commit stats file
         run: |
