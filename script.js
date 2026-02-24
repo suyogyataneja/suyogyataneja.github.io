@@ -60,10 +60,16 @@ document.addEventListener("DOMContentLoaded", () => {
 async function loadCommitStats() {
   try {
     const res = await fetch("stats.json");
-    const data = await res.json();
 
-    const thisYear = data?.data?.user?.thisYear?.totalCommitContributions || 0;
-    const lastYear = data?.data?.user?.lastYear?.totalCommitContributions || 0;
+    if (!res.ok) {
+      throw new Error("Failed to fetch stats.json");
+    }
+
+    const data = await res.json();
+    console.log("Loaded stats:", data);
+
+    const thisYear = data.data.user.thisYear.totalCommitContributions;
+    const lastYear = data.data.user.lastYear.totalCommitContributions;
 
     document.getElementById("commitsThisYear").textContent = thisYear;
     document.getElementById("commitsLastYear").textContent = lastYear;
