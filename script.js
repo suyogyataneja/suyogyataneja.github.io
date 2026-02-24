@@ -62,18 +62,11 @@ async function loadCommitStats() {
     const res = await fetch("stats.json");
     const data = await res.json();
 
-    const thisYear = data.data.user.thisYear.totalCommitContributions;
-    const lastYear = data.data.user.lastYear.totalCommitContributions;
+    const thisYear = data?.data?.user?.thisYear?.totalCommitContributions || 0;
+    const lastYear = data?.data?.user?.lastYear?.totalCommitContributions || 0;
 
-    const container = document.getElementById("github-overview");
-
-    const commitInfo = document.createElement("div");
-    commitInfo.innerHTML = `
-      <p><strong>Commits This Year:</strong> ${thisYear}</p>
-      <p><strong>Commits Last Year:</strong> ${lastYear}</p>
-    `;
-
-    container.appendChild(commitInfo);
+    document.getElementById("commitsThisYear").textContent = thisYear;
+    document.getElementById("commitsLastYear").textContent = lastYear;
 
   } catch (err) {
     console.error("Stats load error:", err);
