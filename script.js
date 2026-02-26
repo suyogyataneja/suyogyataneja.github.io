@@ -68,9 +68,10 @@ async function loadCommitStats() {
     const data = await res.json();
     console.log("Loaded stats:", data);
 
-    const thisYear = data.data.user.thisYear.totalCommitContributions;
-    const lastYear = data.data.user.lastYear.totalCommitContributions;
-
+    //const thisYear = data.data.user.thisYear.totalCommitContributions;
+    //const lastYear = data.data.user.lastYear.totalCommitContributions;
+    const thisYear = data.data.user.thisYear.contributionCalendar.totalContributions;
+    const lastYear = data.data.user.lastYear.contributionCalendar.totalContributions;
     document.getElementById("commitsThisYear").textContent = thisYear;
     document.getElementById("commitsLastYear").textContent = lastYear;
 
