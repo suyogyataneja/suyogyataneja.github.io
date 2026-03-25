@@ -1,1 +1,5 @@
-{"data":{"user":{"thisYear":{"contributionCalendar":{"totalContributions":266}},"lastYear":{"contributionCalendar":{"totalContributions":98}}}}}
+{
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
